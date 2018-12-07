@@ -8,6 +8,7 @@ import com.restfb.Parameter;
 import com.restfb.types.FacebookType;
 import com.restfb.types.Post;
 import com.restfb.types.User;
+import com.restfb.Version;
 
 import interfaces.ResultsInterface;
 
@@ -19,8 +20,9 @@ public class FacebookProg {
 
 	public FacebookProg() {
 		//Token (Chave) de acesso (Tem de ser renovada de x em x tempo)
-		acessToken = "EAAChfjQq2ZBkBAPYDiNuTn7rDue5ImZBZArO4ZCrH9hn5BY5HZB7TrIBqRjAHEcJ4rHIHDZAC4hiOWjOOy4DdTaSGz3U4IESvPSxTxK6wq6WVhBcpHN9TJcZCPI3T3ZBLTNedtYcNfD4czoR7wKg0nn6uwHUMwzOtwfpv4wwY4TkW8Eovq7k1SvrSR4YZBmc90QPfhC0gwRfI3TANeheBXmCC";
-		fbClient = new DefaultFacebookClient(acessToken);
+		acessToken = "EAAChfjQq2ZBkBAMOal5wsT30f1OCGzHNFcBENxqfTNn7ZC2NRIitlJEuPZCeyTKl1gHpIZAtLuZCpHnnMZBMX8NZCtjp6RpPPoA7xXMcJIWcqdnf5jNPYXa9M4WZBEUXTcfotwL4Wf9jYOHMdlf9cIU6OOYNQZA0UJ6lJPpIXe8xyO1ZCuZBQtE1ZALqgw0eAPpdVOrLLLB5Gn27aAZDZD";
+		Version x = Version.LATEST;
+		fbClient = new DefaultFacebookClient(acessToken, x );
 		me = fbClient.fetchObject("me", User.class);
 		System.out.println(me.getName());
 	}
