@@ -19,6 +19,7 @@ public class Interface{
 	private JFrame frame;
 	private InterfaceTwitter iTwitter;
 	private InterfaceFacebook iFacebook;
+	private InterfaceEmail iEmail;
 
 	public Interface() {
 		frame = new JFrame("AppSearcher");
@@ -77,7 +78,15 @@ public class Interface{
 			}
 		});
 
+		email.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				iEmail = new InterfaceEmail();
+				iEmail.open();
+			}
+		});
 	}
+
+
 
 	public static void main(String[] args) {
 		Interface window = new Interface();
