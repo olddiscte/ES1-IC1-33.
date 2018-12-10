@@ -10,13 +10,22 @@ import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 
+
+/**
+ * @author Pedro Santos/Pedro Brites
+ *
+ */
 public class ResultsInterface {
 
-	
+
 	private JFrame frame;
 	private InterfaceTwitter iTwitter;
 	private InterfaceFacebook iFacebook;
 
+	/**
+	 * Construtor
+	 * @param results
+	 */
 	public ResultsInterface(String results) {
 		frame = new JFrame("Results");
 
@@ -27,7 +36,7 @@ public class ResultsInterface {
 		frame.setLayout(new FlowLayout());
 
 		addFrameContent(results);
-	
+
 
 		// para que a janela se redimensione de forma a ter todo o seu conteudo visivel
 
@@ -51,11 +60,12 @@ public class ResultsInterface {
 		JTextArea result = new JTextArea(results);
 		result.setLineWrap(true);
 		result.setEditable(false);
-		
+
 		frame.add(result);
-		
+
 
 	}
-	
+
+
 
 }

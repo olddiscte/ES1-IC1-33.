@@ -12,28 +12,38 @@ import com.restfb.Version;
 
 import interfaces.ResultsInterface;
 
+
+/**
+ * @author Pedro Santos/Pedro Brites
+ *
+ */
 public class FacebookProg {
 
 	private String acessToken; 
 	FacebookClient fbClient;
 	User me;
 
+	/**
+	 * Construtor
+	 */
 	public FacebookProg() {
 		//Token (Chave) de acesso (Tem de ser renovada de x em x tempo)
-		acessToken = "EAAChfjQq2ZBkBAMOal5wsT30f1OCGzHNFcBENxqfTNn7ZC2NRIitlJEuPZCeyTKl1gHpIZAtLuZCpHnnMZBMX8NZCtjp6RpPPoA7xXMcJIWcqdnf5jNPYXa9M4WZBEUXTcfotwL4Wf9jYOHMdlf9cIU6OOYNQZA0UJ6lJPpIXe8xyO1ZCuZBQtE1ZALqgw0eAPpdVOrLLLB5Gn27aAZDZD";
+		acessToken = "EAAChfjQq2ZBkBAD0l2spRvYZBLsy8Gynj2k2xXUdco84QJD4PIZAfz5NtIOhZB5VrLNyH8oFxJkq6kb9GLrfvRLtXU1clzpmgaUMsgtwsZCiLGyx8KDby8AG45JCvsZAsIhjlMXrLZAjLVlFfJ2ZCMkpMhDJDrfOi5N9NpdTiQZC909MQqnk7UKcaMI668zFVIQ8TFUnvRCY0CAZDZD";
 		Version x = Version.LATEST;
 		fbClient = new DefaultFacebookClient(acessToken, x );
 		me = fbClient.fetchObject("me", User.class);
 		System.out.println(me.getName());
 	}
-	
-	//Metodo que procura os posts do Usr
+
+	/**
+	 * procura os posts mais recentes do user
+	 */
 	public void searchUserFeed() { 
 
 		Connection<Post> result = fbClient.fetchConnection("me/feed", Post.class);
 		int counter = 0;
 		StringBuilder texto = new StringBuilder();
-		
+
 		for(List<Post> page : result) {
 			for(Post aPost : page) {
 				texto.append("MESSAGE:  " + aPost.getMessage() + "\n ");
@@ -43,17 +53,20 @@ public class FacebookProg {
 				counter ++;
 			}
 		}
-		
+
 		System.out.println("Number of results:" + counter);
 		String second = texto.toString();
 		ResultsInterface results = new ResultsInterface(second);
 		results.open();
-		
+
 	}
-	
-	//Metodo que faz post no facebook
+
+	/**
+	 * Publica a mensagem passada como argumento no mural do facebook do user (n/ funciona devido a API's)
+	 * @param message
+	 */
 	public void post(String message) {
-		 fbClient.publish("me/feed", FacebookType.class, Parameter.with("message", message));
+		fbClient.publish("me/feed", FacebookType.class, Parameter.with("message", message));
 	}
-	
+
 }

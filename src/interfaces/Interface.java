@@ -15,12 +15,18 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 
+/**
+ * @author Pedro Santos/Pedro Brites
+ */
 public class Interface{
 	private JFrame frame;
 	private InterfaceTwitter iTwitter;
 	private InterfaceFacebook iFacebook;
-	private InterfaceEmail iEmail;
+	private InterfaceLoginEmail iEmail;
 
+	/**
+	 * Construtor
+	 */
 	public Interface() {
 		frame = new JFrame("AppSearcher");
 
@@ -80,7 +86,7 @@ public class Interface{
 
 		email.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				iEmail = new InterfaceEmail();
+				iEmail = new InterfaceLoginEmail();
 				iEmail.open();
 			}
 		});

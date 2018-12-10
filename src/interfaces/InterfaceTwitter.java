@@ -14,11 +14,20 @@ import twitter4j.Twitter;
 import twitter4j.TwitterException;
 
 import programs.*;
+
+
+/**
+ * @author Pedro Santos/Pedro Brites
+ *
+ */
 public class InterfaceTwitter {
 
 	private JFrame frame;
 	private TwitterProg twitter;
-	
+
+	/**
+	 * Construtor
+	 */
 	public InterfaceTwitter() {
 		frame = new JFrame("Twitter");
 
@@ -33,11 +42,11 @@ public class InterfaceTwitter {
 		// para que a janela se redimensione de forma a ter todo o seu conteudo visivel
 
 		frame.setSize(400, 200);
-		
-		
-		
+
+
+
 		twitter = new TwitterProg();
-		
+
 
 	}
 
@@ -47,8 +56,8 @@ public class InterfaceTwitter {
 	}
 
 	private void addFrameContent() {
-		
-		
+
+
 		/* para organizar o conteudo em grelha (linhas x colunas)
 		se um dos valores for zero, o numero de linhas ou colunas (respetivamente) fica indefinido,
 		e estas sao acrescentadas automaticamente */
@@ -57,14 +66,14 @@ public class InterfaceTwitter {
 		//JCheckBox facebook = new JCheckBox("Facebook"); facebook.setBorderPainted(true);
 		JButton twettar = new JButton("Tweetar"); twettar.setBorderPainted(true);
 		JButton procurar = new JButton("Procurar"); procurar.setBorderPainted(true);
-		
+
 		twettar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
+
+
 				String code =  JOptionPane.showInputDialog(frame, "O que queres Twettar?");
-			
-				
+
+
 				try {				
 					twitter.tweetar( code);
 				} catch (TwitterException e1) {
@@ -72,12 +81,12 @@ public class InterfaceTwitter {
 				} 
 			}
 		});
-		
+
 		procurar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				String code =  JOptionPane.showInputDialog(frame, "Queres procurar Tweets de quem?");
-				
+
 				try {				
 					twitter.procurar(code);
 				} catch (TwitterException e1) {
@@ -88,10 +97,10 @@ public class InterfaceTwitter {
 				} 
 			}
 		});
-		
+
 		frame.add(twettar);
 		frame.add(procurar);
 	}
-	
-	
+
+
 }

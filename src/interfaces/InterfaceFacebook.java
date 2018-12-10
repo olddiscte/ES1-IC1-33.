@@ -14,11 +14,19 @@ import javax.swing.WindowConstants;
 import programs.FacebookProg;
 import programs.TwitterProg;
 import twitter4j.TwitterException;
+
+/**
+ * @author Pedro Santos/Pedro Brites
+ *
+ */
 public class InterfaceFacebook {
-	
+
 	private JFrame frame;
 	private FacebookProg face;
-	
+
+	/**
+	 * Construtor
+	 */
 	public InterfaceFacebook() {
 		frame = new JFrame("Facebook");
 
@@ -57,7 +65,7 @@ public class InterfaceFacebook {
 		JButton perfil = new JButton("User Posts"); perfil.setBorderPainted(true);
 
 		perfil.addActionListener(new ActionListener() {
-			
+
 			public void actionPerformed(ActionEvent e) {
 				face.searchUserFeed();; 
 			}

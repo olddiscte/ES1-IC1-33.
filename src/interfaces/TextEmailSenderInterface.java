@@ -15,46 +15,51 @@ import javax.swing.WindowConstants;
 
 import programs.EmailProg;
 
-public class InterfaceEmail {
 
+/**
+ * @author Pedro Santos/Pedro Brites
+ *
+ */
+public class TextEmailSenderInterface {
 
 	private JFrame frame;
 	private EmailProg email;
-	
-	public InterfaceEmail() {
+
+	/**
+	 * Construtor
+	 * @param email
+	 */
+	public TextEmailSenderInterface(EmailProg email) {
+		this.email = email;
 		frame = new JFrame("Email");
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setLayout(new FlowLayout());
 		addFrameContent();
 		frame.setSize(400, 200);
 		frame.pack();
-		//face = new FacebookProg();
 	}
 
 	private void addFrameContent() {
-		
 		frame.setLayout(new GridLayout(1,0));
-		JPasswordField pw = new JPasswordField();
-		JTextField login = new JTextField("email");
-		JButton log = new JButton("Login");
-		
-		
-		log.addActionListener(new ActionListener() {
+
+		JTextField txt = new JTextField("Escreve aqui");
+		JButton send = new JButton("Enviar");
+
+
+		send.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					email = new EmailProg(login.getText(), pw.getPassword().toString());
-				} catch (MessagingException | IOException e1) {
-					
+					String x = txt.getText();
+					email.enviarEmail(x);
+				} catch (MessagingException e1) {
+
 					e1.printStackTrace();
 				}
 			}
 		});
-		
-		frame.add(login);
-		frame.add(pw);
-		frame.add(log);
-		
 
+		frame.add(txt);
+		frame.add(send);
 	}
 
 	public void open() {
